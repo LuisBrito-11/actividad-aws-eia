@@ -57,11 +57,9 @@ Precios que verifiqué en la página oficial: https://aws.amazon.com/secrets-man
 | Rotación + relectura (paso 5) | Nueva versión `AWSCURRENT`, la anterior pasó a `AWSPREVIOUS`; el mismo script trajo el valor nuevo sin que le cambiara nada de código | [`evidence/01/paso5_rotacion_y_relectura.txt`](../evidence/01/paso5_rotacion_y_relectura.txt) |
 | Eliminación (paso 6) | `delete-secret` confirmado; `list-secrets` ya no lo muestra | [`evidence/01/paso6_eliminacion.txt`](../evidence/01/paso6_eliminacion.txt) |
 
-## Capturas de consola que voy a tomar
+## Capturas de consola
 
-Para complementar la evidencia de CLI (ya guardada), voy a tomar estas capturas de la consola de AWS antes de eliminar el secreto:
-- `01_secreto_creado.png` — consola de Secrets Manager mostrando el secreto `taller-aws-eia/punto1/demo-db-credentials`, con sus tags visibles.
-- `02_versiones_secreto.png` — pestaña "Versions" del secreto mostrando `AWSCURRENT` y `AWSPREVIOUS` tras la rotación.
+Eliminé el secreto (`force-delete-without-recovery`) antes de pensar en tomar capturas de la consola, así que ya no quedó nada que fotografiar ahí. Decidí no recrear el secreto solo para la foto: la evidencia de CLI guardada en `evidence/01/` ya cubre cada paso (creación, lectura, rotación, eliminación) con el detalle exacto de lo que devolvió AWS.
 
 ## Checklist de cierre
 
@@ -70,5 +68,5 @@ Para complementar la evidencia de CLI (ya guardada), voy a tomar estas capturas 
 - [x] Código probado y reproducible (`get_secret.py` + comandos documentados arriba).
 - [x] Preguntas de costos respondidas con precios verificados (fuente y fecha citadas).
 - [x] Recurso eliminado + verificación (`evidence/01/paso6_eliminacion.txt`).
-- [ ] Capturas de consola (pendiente, opcionales — el secreto ya lo eliminé).
+- [x] Capturas de consola: decidí no tomarlas (el secreto ya estaba eliminado); la evidencia de CLI cubre todo el flujo.
 - [x] Paso 2/4 (política IAM de mínimo privilegio en identidad separada): lo gestiona el profesor centralmente a nivel de cuenta; dejo el diseño documentado como referencia.

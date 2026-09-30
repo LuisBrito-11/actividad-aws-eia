@@ -1,6 +1,10 @@
 # Instrucciones internas de trabajo (no se sube al repo)
 CLAUDE.md
 
+# Capturas de pantalla locales (solo para armar el Word de evidencias, no van al repo)
+capturas-locales/
+evidencias-taller-aws.docx
+
 # Terraform
 **/.terraform/
 *.tfstate

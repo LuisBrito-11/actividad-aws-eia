@@ -1,0 +1,91 @@
+=== terraform apply (version Terraform, Punto 2) ===
+(log no disponible, ver terraform state/output abajo)
+
+=== terraform state list ===
+data.aws_ami.al2023
+data.aws_subnets.default
+data.aws_vpc.default
+aws_db_instance.demo
+aws_db_subnet_group.demo
+aws_instance.demo
+aws_s3_bucket.demo
+aws_s3_bucket_public_access_block.demo
+aws_security_group.ec2
+aws_security_group.rds
+random_id.suffix
+
+=== terraform output ===
+ec2_instance_id = "i-006bcc2193791fb1a"
+rds_endpoint = "taller-aws-eia-punto2-mysql.cp0uua4wm9yi.us-east-2.rds.amazonaws.com:3306"
+rds_secret_arn = "arn:aws:secretsmanager:us-east-2:802655955683:secret:rds!db-b6021e6d-8d87-4667-9726-16d998cdc5f9-GJlNig"
+s3_bucket_name = "taller-aws-eia-punto2-2172f7b8"
+
+=== Verificacion EC2 ===
+---------------------------
+|    DescribeInstances    |
++-------------------------+
+|  i-006bcc2193791fb1a    |
+|  running                |
+|  t3.micro               |
+|  vpc-00b9427f995220689  |
++-------------------------+
+
+=== Verificacion RDS ===
+--------------------------------------------------------------------------
+|                           DescribeDBInstances                          |
++------------------------------------------------------------------------+
+|  taller-aws-eia-punto2-mysql                                           |
+|  available                                                             |
+|  taller-aws-eia-punto2-mysql.cp0uua4wm9yi.us-east-2.rds.amazonaws.com  |
++------------------------------------------------------------------------+
+
+=== Verificacion S3 ===
+{
+    "BucketArn": "arn:aws:s3:::taller-aws-eia-punto2-2172f7b8",
+    "BucketRegion": "us-east-2",
+    "AccessPointAlias": false
+}
+bucket existe
+
+=== Secreto de RDS gestionado por Secrets Manager (sin exponer el valor) ===
+{
+    "ARN": "arn:aws:secretsmanager:us-east-2:802655955683:secret:rds!db-b6021e6d-8d87-4667-9726-16d998cdc5f9-GJlNig",
+    "Name": "rds!db-b6021e6d-8d87-4667-9726-16d998cdc5f9",
+    "Description": "The secret associated with the primary RDS DB instance: arn:aws:rds:us-east-2:802655955683:db:taller-aws-eia-punto2-mysql",
+    "RotationEnabled": true,
+    "RotationRules": {
+        "AutomaticallyAfterDays": 7
+    },
+    "LastRotatedDate": "2026-09-30T10:35:01.462000-05:00",
+    "LastChangedDate": "2026-09-30T10:35:01.469000-05:00",
+    "NextRotationDate": "2026-10-07T18:59:59-05:00",
+    "Tags": [
+        {
+            "Key": "aws:rds:primaryDBInstanceArn",
+            "Value": "arn:aws:rds:us-east-2:802655955683:db:taller-aws-eia-punto2-mysql"
+        },
+        {
+            "Key": "Project",
+            "Value": "taller-aws-eia"
+        },
+        {
+            "Key": "aws:secretsmanager:owningService",
+            "Value": "rds"
+        },
+        {
+            "Key": "Owner",
+            "Value": "Luis Brito Rincon"
+        },
+        {
+            "Key": "Punto",
+            "Value": "2"
+        }
+    ],
+    "VersionIdsToStages": {
+        "8040b3b7-c3cb-4f8d-96b2-6ad3a602bd89": [
+            "AWSCURRENT"
+        ]
+    },
+    "OwningService": "rds",
+    "CreatedDate": "2026-09-30T10:32:06.047000-05:00"
+}
