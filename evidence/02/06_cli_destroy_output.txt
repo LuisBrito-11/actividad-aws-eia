@@ -1,0 +1,21 @@
+=== python deploy.sh destroy (version CLI, Punto 2) ===
+Eliminando RDS 'taller-aws-eia-punto2-cli-mysql' (si existe)...
+  esperando a que se elimine...
+  RDS eliminada.
+  DB subnet group eliminado.
+Buscando instancias EC2 con tag Name=taller-aws-eia-punto2-cli-ec2...
+  terminando: i-0c0fb705b8f30181f
+  EC2 terminada.
+  SG 'taller-aws-eia-punto2-cli-rds-sg' eliminado.
+  SG 'taller-aws-eia-punto2-cli-ec2-sg' eliminado.
+Vaciando y eliminando bucket 'taller-aws-eia-punto2-cli' (si existe)...
+  bucket eliminado.
+
+Destroy completo.
+
+=== Verificacion final ===
+terminated
+
+aws: [ERROR]: An error occurred (DBInstanceNotFound) when calling the DescribeDBInstances operation: DBInstance taller-aws-eia-punto2-cli-mysql not found.
+
+aws: [ERROR]: An error occurred (404) when calling the HeadBucket operation: Not Found
