@@ -1,0 +1,34 @@
+# Instrucciones internas de trabajo (no se sube al repo)
+CLAUDE.md
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+
+# Secretos y llaves
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Bundles de certificados descargados (se documentan, no se versionan si son grandes)
+global-bundle.pem
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
