@@ -8,7 +8,7 @@ Entrega de la actividad "Taller AWS": Secrets Manager, Terraform/Boto3/CLI (S3+E
 |---|---|---|---|
 | 0 | Preparación (cuenta, perfil CLI, herramientas) | — | ✅ |
 | 1 | AWS Secrets Manager | [01-secrets-manager/](01-secrets-manager/) | ✅ |
-| 2 | Terraform + Boto3 + CLI (S3, EC2, RDS) | [02-terraform-sdk-cli/](02-terraform-sdk-cli/) | ⏳ |
+| 2 | Terraform + Boto3 + CLI (S3, EC2, RDS) | [02-terraform-sdk-cli/](02-terraform-sdk-cli/) | ✅ |
 | 3 | Amazon DocumentDB | [03-documentdb/](03-documentdb/) | ⏳ |
 | 4 | Amazon Neptune | [04-neptune/](04-neptune/) | ⏳ |
 | 5 | Amazon Redshift | [05-redshift/](05-redshift/) | ⏳ |
