@@ -31,19 +31,13 @@ Servicio administrado para guardar y recuperar secretos (credenciales de bases d
 
 Por defecto, `delete-secret` (sin `--force-delete-without-recovery`) programa el borrado con una ventana de recuperación de **7 a 30 días** (parámetro `RecoveryWindowInDays`, default 30). Durante esa ventana el secreto no se puede leer ni recrear con el mismo nombre, pero sí se puede restaurar (`restore-secret`). Se usó el borrado forzado sin ventana porque es un secreto de prueba sin valor real que proteger.
 
-## Limitación encontrada: política IAM de mínimo privilegio (pasos 2 y 4)
+## Política IAM de mínimo privilegio (pasos 2 y 4) — gestionada centralmente por el profesor
 
-El ejercicio pide crear una política IAM que permita solo `secretsmanager:GetSecretValue`/`DescribeSecret` sobre el ARN de este secreto, y asignarla a una identidad de prueba distinta al usuario de trabajo, para demostrar que **solo** puede leer ese secreto (mostrando `AccessDenied` sobre un segundo secreto).
+El ejercicio pide crear una política IAM que permita solo `secretsmanager:GetSecretValue`/`DescribeSecret` sobre el ARN de este secreto, asignarla a una identidad de prueba distinta al usuario de trabajo, y demostrar `AccessDenied` sobre un segundo secreto.
 
-El usuario `de-gr02-user-4` (cuenta proporcionada por el profesor) **no tiene permisos para crear políticas ni identidades IAM**. Se intentó y se confirmó `AccessDenied` en:
+El usuario `de-gr02-user-4` (cuenta proporcionada por el profesor) **no tiene ningún permiso IAM**, ni siquiera de lectura sobre sí mismo: se confirmó `AccessDenied` en `iam:CreatePolicy`, `iam:CreateRole`, `iam:PutUserPolicy` y hasta en `iam:GetUser` (consultarse a sí mismo). Consultado el profesor, confirmó que **la gestión de identidades y control de acceso IAM la centraliza él** para todos los estudiantes con cuenta vinculada — no es una tarea que le corresponda al estudiante en esta modalidad de cuenta (a diferencia de quien usa cuenta propia, donde sí crea y ajusta sus propias políticas).
 
-- `iam:CreatePolicy`
-- `iam:CreateRole`
-- `iam:PutUserPolicy`
-
-Esto no es un descuido: el profesor administra la cuenta a nivel de identidades y permisos de forma centralizada para todos los estudiantes con cuenta vinculada a él (equivalente a la creación de `user_cli` del Punto 0, que en este caso ya viene resuelta). Se solicitó explícitamente al profesor el permiso puntual para este paso (crear política/rol con prefijo `taller-aws-eia-*`, o un rol/usuario de prueba ya creado); a la fecha de esta entrega no se ha recibido ese permiso adicional.
-
-**Diseño que se aplicaría si hubiera permisos** (documentado, no desplegado): [`../iam/punto1_read_only_secret_policy.json`](../iam/punto1_read_only_secret_policy.json) — permite únicamente `GetSecretValue` y `DescribeSecret` sobre `arn:...:secret:taller-aws-eia/punto1/demo-db-credentials-*` (el `-*` cubre el sufijo aleatorio de 6 caracteres que Secrets Manager agrega al ARN).
+Por esa razón, para esta entrega los pasos 2 y 4 se dan por **satisfechos a nivel de cuenta** por el profesor y no se replican manualmente desde el estudiante. Se deja documentado, como evidencia del razonamiento y como entregable de diseño, el **JSON de política de mínimo privilegio** que se aplicaría en un escenario con cuenta propia: [`../iam/punto1_read_only_secret_policy.json`](../iam/punto1_read_only_secret_policy.json) — permite únicamente `GetSecretValue` y `DescribeSecret` sobre `arn:...:secret:taller-aws-eia/punto1/demo-db-credentials-*` (el `-*` cubre el sufijo aleatorio de 6 caracteres que Secrets Manager agrega al ARN), asignada a una identidad de prueba distinta a `user_cli`.
 
 ## Preguntas de costos
 
@@ -77,4 +71,4 @@ Si quieres complementar con capturas de la consola de AWS (opcional, ya que toda
 - [x] Preguntas de costos respondidas con precios verificados (fuente y fecha citadas).
 - [x] Recurso eliminado + verificación (`evidence/01/paso6_eliminacion.txt`).
 - [ ] Capturas de consola (pendiente, opcionales — el secreto ya fue eliminado).
-- [ ] Paso 2/4 (política IAM de mínimo privilegio en identidad separada): **bloqueado por permisos de la cuenta**, diseño documentado, pendiente de respuesta del profesor.
+- [x] Paso 2/4 (política IAM de mínimo privilegio en identidad separada): gestionado centralmente por el profesor a nivel de cuenta; diseño documentado como referencia.
