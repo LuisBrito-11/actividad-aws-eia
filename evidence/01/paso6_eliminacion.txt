@@ -1,0 +1,44 @@
+=== delete-secret (force-delete-without-recovery, es secreto de prueba) ===
+{
+    "ARN": "arn:aws:secretsmanager:us-east-2:802655955683:secret:taller-aws-eia/punto1/demo-db-credentials-TdpmJE",
+    "Name": "taller-aws-eia/punto1/demo-db-credentials",
+    "DeletionDate": "2026-09-30T07:01:26.247000-05:00"
+}
+
+=== describe-secret tras eliminar (debe fallar con ResourceNotFoundException) ===
+{
+    "ARN": "arn:aws:secretsmanager:us-east-2:802655955683:secret:taller-aws-eia/punto1/demo-db-credentials-TdpmJE",
+    "Name": "taller-aws-eia/punto1/demo-db-credentials",
+    "Description": "Secreto de prueba (credenciales ficticias) para Punto 1 - Taller AWS EIA",
+    "LastChangedDate": "2026-09-30T07:01:26.264000-05:00",
+    "LastAccessedDate": "2026-09-29T19:00:00-05:00",
+    "DeletedDate": "2026-09-30T07:01:26.257000-05:00",
+    "Tags": [
+        {
+            "Key": "Project",
+            "Value": "taller-aws-eia"
+        },
+        {
+            "Key": "Owner",
+            "Value": "Luis Brito Rincon"
+        },
+        {
+            "Key": "Punto",
+            "Value": "1"
+        }
+    ],
+    "VersionIdsToStages": {
+        "997269c7-c508-4b92-a149-9f3f400cf351": [
+            "AWSPREVIOUS"
+        ],
+        "a1e799f5-40ba-4a41-aad8-2ccf20accafa": [
+            "AWSCURRENT"
+        ]
+    },
+    "CreatedDate": "2026-09-30T06:48:58.973000-05:00"
+}
+
+=== list-secrets filtrando por el nombre (no debe aparecer) ===
+{
+    "SecretList": []
+}

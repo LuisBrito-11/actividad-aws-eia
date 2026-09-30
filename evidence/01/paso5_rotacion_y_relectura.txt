@@ -1,0 +1,33 @@
+=== Versiones del secreto tras put-secret-value ===
+{
+    "Versions": [
+        {
+            "VersionId": "a1e799f5-40ba-4a41-aad8-2ccf20accafa",
+            "VersionStages": [
+                "AWSCURRENT"
+            ],
+            "CreatedDate": "2026-09-30T07:01:06.576000-05:00",
+            "KmsKeyIds": [
+                "DefaultEncryptionKey"
+            ]
+        },
+        {
+            "VersionId": "997269c7-c508-4b92-a149-9f3f400cf351",
+            "VersionStages": [
+                "AWSPREVIOUS"
+            ],
+            "LastAccessedDate": "2026-09-29T19:00:00-05:00",
+            "CreatedDate": "2026-09-30T06:48:59.001000-05:00",
+            "KmsKeyIds": [
+                "DefaultEncryptionKey"
+            ]
+        }
+    ],
+    "ARN": "arn:aws:secretsmanager:us-east-2:802655955683:secret:taller-aws-eia/punto1/demo-db-credentials-TdpmJE",
+    "Name": "taller-aws-eia/punto1/demo-db-credentials"
+}
+
+=== Paso 5: mismo script (get_secret.py) sin cambios, tras rotar el valor ===
+Secreto 'taller-aws-eia/punto1/demo-db-credentials' leido correctamente:
+  username: demo_user
+  password: NuevaContraseñaRotada456!

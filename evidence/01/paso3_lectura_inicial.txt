@@ -1,0 +1,4 @@
+=== Paso 3: lectura inicial del secreto (version original) ===
+Secreto 'taller-aws-eia/punto1/demo-db-credentials' leido correctamente:
+  username: demo_user
+  password: ContraseñaDePrueba123!
