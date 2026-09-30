@@ -21,7 +21,7 @@ PATTERNS=(
 
 # Archivos/carpetas que no se escanean (binarios, dependencias, estado de terraform ya ignorado,
 # y este mismo script porque contiene los patrones como texto literal)
-EXCLUDE_DIRS='--glob=!.git/* --glob=!.venv/* --glob=!venv/* --glob=!node_modules/* --glob=!*.tfstate --glob=!*.tfstate.* --glob=!scripts/scan_secrets.sh --glob=!CLAUDE.md'
+EXCLUDE_DIRS='--glob=!.git/* --glob=!.venv/* --glob=!venv/* --glob=!node_modules/* --glob=!*.tfstate --glob=!*.tfstate.* --glob=!scripts/scan_secrets.sh --glob=!CLAUDE.md --glob=!**/global-bundle.pem'
 
 FOUND=0
 
@@ -31,7 +31,7 @@ for pattern in "${PATTERNS[@]}"; do
   else
     matches=$(grep -RnoiE "$pattern" \
       --exclude-dir=.git --exclude-dir=.venv --exclude-dir=venv --exclude-dir=node_modules \
-      --exclude=scan_secrets.sh --exclude=CLAUDE.md \
+      --exclude=scan_secrets.sh --exclude=CLAUDE.md --exclude=global-bundle.pem \
       . 2>/dev/null)
   fi
 

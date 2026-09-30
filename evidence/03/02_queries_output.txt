@@ -1,0 +1,26 @@
+=== python queries.py (conexion via tunel SSH + TLS, Punto 3) ===
+Insertados 11 documentos en 'taller_aws_eia.estudiantes'.
+
+--- Filtro: estudiantes de Ing. de Datos con promedio >= 4.2 ---
+{'nombre': 'Ana', 'programa': 'Ing. de Datos', 'semestre': 6, 'promedio': 4.3}
+{'nombre': 'Luis', 'programa': 'Ing. de Datos', 'semestre': 8, 'promedio': 4.6}
+{'nombre': 'Laura', 'programa': 'Ing. de Datos', 'semestre': 9, 'promedio': 4.8}
+{'nombre': 'Andres', 'programa': 'Ing. de Datos', 'semestre': 5, 'promedio': 4.2}
+
+--- Ordenacion: todos los estudiantes por promedio descendente ---
+{'nombre': 'Laura', 'promedio': 4.8}
+{'nombre': 'Luis', 'promedio': 4.6}
+{'nombre': 'Valentina', 'promedio': 4.4}
+{'nombre': 'Ana', 'promedio': 4.3}
+{'nombre': 'Andres', 'promedio': 4.2}
+{'nombre': 'Carlos', 'promedio': 4.1}
+{'nombre': 'Camila', 'promedio': 4.0}
+{'nombre': 'Sofia', 'promedio': 4.0}
+{'nombre': 'Maria', 'promedio': 3.9}
+{'nombre': 'Pedro', 'promedio': 3.7}
+{'nombre': 'Diego', 'promedio': 3.5}
+
+--- Agregacion: promedio de nota y conteo de estudiantes por programa ---
+{'_id': 'Ing. de Datos', 'promedio_del_programa': 4.38, 'cantidad_estudiantes': 5}
+{'_id': 'Ing. de Sistemas', 'promedio_del_programa': 4.133333333333334, 'cantidad_estudiantes': 3}
+{'_id': 'Ing. Biomedica', 'promedio_del_programa': 3.733333333333333, 'cantidad_estudiantes': 3}
