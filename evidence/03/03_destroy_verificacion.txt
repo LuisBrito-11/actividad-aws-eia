@@ -1,0 +1,18 @@
+=== Instancia DocumentDB ===
+
+aws: [ERROR]: An error occurred (DBInstanceNotFound) when calling the DescribeDBInstances operation: DBInstance taller-aws-eia-punto3-docdb-instance not found.
+=== Cluster DocumentDB ===
+
+aws: [ERROR]: An error occurred (DBClusterNotFoundFault) when calling the DescribeDBClusters operation: DBCluster taller-aws-eia-punto3-docdb-cluster not found.
+=== DB Subnet group ===
+
+aws: [ERROR]: An error occurred (DBSubnetGroupNotFoundFault) when calling the DescribeDBSubnetGroups operation: DB Subnet group 'taller-aws-eia-punto3-docdb-subnet-group' not found.
+=== EC2 bastion ===
+terminated
+=== Security groups ===
+=== Key pair ===
+
+aws: [ERROR]: An error occurred (InvalidKeyPair.NotFound) when calling the DescribeKeyPairs operation: The key pair 'taller-aws-eia-punto3-bastion-key' does not exist
+=== Secreto (debe estar programado para borrar por RDS, o ya no existir) ===
+
+aws: [ERROR]: An error occurred (ResourceNotFoundException) when calling the DescribeSecret operation: Secrets Manager can't find the specified secret.

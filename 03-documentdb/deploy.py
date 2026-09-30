@@ -8,6 +8,7 @@ Uso:
 
 import argparse
 import os
+import time
 
 import boto3
 from botocore.exceptions import ClientError
@@ -211,9 +212,17 @@ def destroy():
 
     try:
         docdb.delete_db_cluster(DBClusterIdentifier=CLUSTER_ID, SkipFinalSnapshot=True)
-        print(f"Eliminando cluster '{CLUSTER_ID}'...")
-        waiter = docdb.get_waiter("db_cluster_deleted")
-        waiter.wait(DBClusterIdentifier=CLUSTER_ID)
+        print(f"Eliminando cluster '{CLUSTER_ID}', esperando (docdb no tiene waiter para esto, hago polling manual)...")
+        # botocore no trae un waiter "db_cluster_deleted" para DocumentDB, asi que espero a mano
+        while True:
+            try:
+                status = docdb.describe_db_clusters(DBClusterIdentifier=CLUSTER_ID)["DBClusters"][0]["Status"]
+                print(f"    estado: {status}")
+                time.sleep(15)
+            except ClientError as inner:
+                if inner.response["Error"]["Code"] == "DBClusterNotFoundFault":
+                    break
+                raise
         print("  cluster eliminado.")
     except ClientError as e:
         print(f"  cluster: {e.response['Error']['Code']}")
