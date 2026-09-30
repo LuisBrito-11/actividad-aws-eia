@@ -1,0 +1,13 @@
+=== python deploy.py destroy (version Boto3, Punto 2) ===
+Eliminando RDS 'taller-aws-eia-punto2-boto3-mysql', esperando...
+  RDS eliminada.
+  DB subnet group eliminado.
+Terminando EC2 ['i-0100eac167e5a9271']...
+  EC2 terminada.
+  SG 'taller-aws-eia-punto2-boto3-rds-sg' eliminado.
+  SG 'taller-aws-eia-punto2-boto3-ec2-sg' eliminado.
+  Bucket 'taller-aws-eia-punto2-boto3' eliminado.
+
+Destroy completo.
+=== Verificacion final ===
+terminated
