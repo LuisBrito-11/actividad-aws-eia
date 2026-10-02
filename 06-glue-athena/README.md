@@ -61,3 +61,5 @@ Precios verificados con la AWS Pricing API (región us-east-2, consultado 2026-1
 - [x] Comparación real crawler vs tabla manual, con hallazgo concreto (pérdida silenciosa de datos).
 - [x] Explicación de por qué no hace falta un secreto adicional.
 - [x] Preguntas de costos respondidas con precios verificados.
+- [x] Recursos destruidos + verificación: crawler, base de datos, workgroup de Athena y bucket confirmados eliminados ([`../evidence/06/04_destroy_verificacion.txt`](../evidence/06/04_destroy_verificacion.txt)).
+- [ ] Rol IAM (`taller-aws-eia-punto6-glue-crawler-role`): no lo pude borrar yo (`iam:DeleteRole`/`DetachRolePolicy` denegados). Sin costo (los roles IAM son gratis), pendiente de que el profesor lo elimine si lo considera necesario.

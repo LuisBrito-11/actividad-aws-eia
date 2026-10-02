@@ -1,0 +1,22 @@
+=== python deploy.py destroy (Punto 6) ===
+  crawler eliminado.
+  base de datos 'taller_aws_eia_punto6' eliminada.
+  workgroup de athena eliminado.
+  bucket 'taller-aws-eia-punto6-datos' eliminado.
+
+=== Verificacion ===
+
+aws: [ERROR]: An error occurred (EntityNotFoundException) when calling the GetCrawler operation: Crawler entry with name taller-aws-eia-punto6-crawler does not exist
+
+aws: [ERROR]: An error occurred (EntityNotFoundException) when calling the GetDatabase operation: Database taller_aws_eia_punto6 not found.
+
+aws: [ERROR]: An error occurred (InvalidRequestException) when calling the GetWorkGroup operation: WorkGroup is not found.
+
+Additional error details:
+AthenaErrorCode: INVALID_INPUT
+
+aws: [ERROR]: An error occurred (404) when calling the HeadBucket operation: Not Found
+
+=== Rol IAM (no se pudo borrar, sin costo, IAM roles son gratis) ===
+iam:DetachRolePolicy y iam:DeleteRole denegados sobre taller-aws-eia-punto6-glue-crawler-role
+Pendiente de que el profesor lo elimine si lo considera necesario (sin impacto en costos).
