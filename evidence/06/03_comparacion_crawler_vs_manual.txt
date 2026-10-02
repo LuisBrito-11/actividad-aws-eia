@@ -1,0 +1,18 @@
+=== Comparacion: tabla creada por el crawler vs tabla creada manualmente (Punto 6) ===
+
+Tabla manual ("productos_manual"), creada con glue.create_table() declarando a mano
+fecha_lanzamiento=date y en_oferta=boolean (los tipos "correctos" a simple vista).
+
+Consulta: SELECT * FROM taller_aws_eia_punto6.productos_manual LIMIT 3;
+
+product_id | nombre              | categoria   | precio    | stock | fecha_lanzamiento | en_oferta
+1          | Laptop 14 pulgadas  | Electronica | 819724.42 | 38    | NULL              | NULL
+2          | Mouse inalambrico   | Electronica | 195004.17 | 137   | NULL              | NULL
+3          | Teclado mecanico    | Electronica | 2275614.6 | 54    | NULL              | NULL
+
+Conclusion: al declarar el tipo "correcto" a mano sin que coincida exactamente con el
+formato real del dato (DD/MM/YYYY en vez de YYYY-MM-DD, "Si"/"No" en vez de true/false),
+el SerDe de Athena no lanza error: simplemente devuelve NULL, perdiendo el dato en
+silencio. El crawler, en cambio, infiere "string" (el tipo mas seguro cuando no esta
+seguro) y preserva el valor crudo intacto, permitiendo corregirlo despues a proposito
+(con CAST/date_parse en la consulta) en vez de perderlo sin darse cuenta.

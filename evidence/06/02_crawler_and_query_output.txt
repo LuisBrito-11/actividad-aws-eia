@@ -1,0 +1,37 @@
+=== python deploy.py crawler-create + crawler-run (Punto 6) ===
+Creando crawler 'taller-aws-eia-punto6-crawler'...
+  crawler creado.
+Corriendo crawler 'taller-aws-eia-punto6-crawler'...
+  estado: READY
+  resultado: SUCCEEDED
+
+Tabla descubierta: aws_glue_productos
+  product_id: bigint
+  nombre: string
+  categoria: string
+  precio: double
+  stock: bigint
+  fecha_lanzamiento: string   <- inferido mal (deberia ser fecha), formato DD/MM/YYYY no reconocido
+  en_oferta: string           <- inferido mal (deberia ser booleano), valores "Si"/"No" no son literales booleanos
+
+=== python deploy.py query (correccion + consultas) ===
+
+--- Correccion de esquema: fecha_lanzamiento y en_oferta, mal inferidas como string ---
+  {'product_id': '1', 'nombre': 'Laptop 14 pulgadas', 'fecha_lanzamiento_corregida': '2024-11-13 00:00:00.000', 'en_oferta_booleano': 'true'}
+  {'product_id': '2', 'nombre': 'Mouse inalambrico', 'fecha_lanzamiento_corregida': '2024-06-04 00:00:00.000', 'en_oferta_booleano': 'true'}
+  {'product_id': '3', 'nombre': 'Teclado mecanico', 'fecha_lanzamiento_corregida': '2024-02-02 00:00:00.000', 'en_oferta_booleano': 'false'}
+  {'product_id': '4', 'nombre': 'Monitor 24 pulgadas', 'fecha_lanzamiento_corregida': '2024-09-03 00:00:00.000', 'en_oferta_booleano': 'false'}
+  {'product_id': '5', 'nombre': 'Audifonos bluetooth', 'fecha_lanzamiento_corregida': '2024-04-04 00:00:00.000', 'en_oferta_booleano': 'true'}
+
+--- Consulta 1 (filtro): productos de Electronica con precio > 500000 ---
+  {'product_id': '3', 'nombre': 'Teclado mecanico', 'categoria': 'Electronica', 'precio': '2275614.6'}
+  {'product_id': '4', 'nombre': 'Monitor 24 pulgadas', 'categoria': 'Electronica', 'precio': '1054157.8'}
+  {'product_id': '1', 'nombre': 'Laptop 14 pulgadas', 'categoria': 'Electronica', 'precio': '819724.42'}
+
+--- Consulta 2 (agrupacion): cantidad de productos y stock total por categoria ---
+  {'categoria': 'Deportes', 'num_productos': '5', 'stock_total': '675'}
+  {'categoria': 'Electronica', 'num_productos': '5', 'stock_total': '434'}
+  {'categoria': 'Juguetes', 'num_productos': '4', 'stock_total': '422'}
+  {'categoria': 'Hogar', 'num_productos': '5', 'stock_total': '387'}
+  {'categoria': 'Libros', 'num_productos': '3', 'stock_total': '283'}
+  {'categoria': 'Ropa', 'num_productos': '3', 'stock_total': '281'}

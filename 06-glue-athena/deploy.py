@@ -23,17 +23,21 @@ PUNTO = "6"
 OWNER = "Luis Brito Rincon"
 
 BUCKET_NAME = "taller-aws-eia-punto6-datos"
-DATA_PREFIX = "productos"
+# La politica AWSGlueServiceRole solo da s3:GetObject sobre rutas que contengan
+# "aws-glue-" en el nombre (bucket o carpeta) - por eso el prefijo se llama asi,
+# no es un nombre al azar.
+DATA_PREFIX = "aws-glue-productos"
 DATA_DIR = Path(__file__).parent / "data"
 
 GLUE_DB_NAME = "taller_aws_eia_punto6"
 CRAWLER_NAME = "taller-aws-eia-punto6-crawler"
 
 ATHENA_WORKGROUP = "taller-aws-eia-punto6-wg"
-ATHENA_RESULTS_PREFIX = "athena-results/"
+ATHENA_RESULTS_PREFIX = "athena-results/"  # esto lo escribe Athena con mis permisos, no el rol del crawler
 
-# ARN del rol que me dio el profesor para el crawler (glue.amazonaws.com -> S3 + Glue Catalog)
-GLUE_CRAWLER_ROLE_ARN = "PENDIENTE"
+# Rol que yo mismo pude crear (iam:CreateRole ya habilitado) con la policy
+# administrada AWSGlueServiceRole adjunta (es lo unico que me dejan adjuntar).
+GLUE_CRAWLER_ROLE_ARN = "arn:aws:iam::802655955683:role/taller-aws-eia-punto6-glue-crawler-role"
 
 TAGS = [
     {"Key": "Project", "Value": PROJECT},
@@ -172,10 +176,23 @@ def fetch_athena_results(athena, qid):
 def query():
     athena = boto3.client("athena", region_name=REGION)
 
+    print("\n--- Correccion de esquema: fecha_lanzamiento y en_oferta, mal inferidas como string ---")
+    qid = run_athena_query(athena, f"""
+        SELECT
+            product_id,
+            nombre,
+            date_parse(fecha_lanzamiento, '%d/%m/%Y') AS fecha_lanzamiento_corregida,
+            CASE WHEN en_oferta = 'Si' THEN true ELSE false END AS en_oferta_booleano
+        FROM {GLUE_DB_NAME}.aws_glue_productos
+        LIMIT 5;
+    """, "correccion de esquema")
+    for row in fetch_athena_results(athena, qid):
+        print(f"  {row}")
+
     print("\n--- Consulta 1 (filtro): productos de Electronica con precio > 500000 ---")
     qid = run_athena_query(athena, f"""
         SELECT product_id, nombre, categoria, precio
-        FROM {GLUE_DB_NAME}.productos
+        FROM {GLUE_DB_NAME}.aws_glue_productos
         WHERE categoria = 'Electronica' AND CAST(precio AS DOUBLE) > 500000
         ORDER BY CAST(precio AS DOUBLE) DESC;
     """, "filtro")
@@ -185,7 +202,7 @@ def query():
     print("\n--- Consulta 2 (agrupacion): cantidad de productos y stock total por categoria ---")
     qid = run_athena_query(athena, f"""
         SELECT categoria, COUNT(*) AS num_productos, SUM(CAST(stock AS INTEGER)) AS stock_total
-        FROM {GLUE_DB_NAME}.productos
+        FROM {GLUE_DB_NAME}.aws_glue_productos
         GROUP BY categoria
         ORDER BY stock_total DESC;
     """, "agrupacion")

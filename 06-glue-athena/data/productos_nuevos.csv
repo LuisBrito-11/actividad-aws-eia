@@ -1,0 +1,4 @@
+product_id,nombre,categoria,precio,stock,fecha_lanzamiento,en_oferta
+26,Parlante bluetooth,Electronica,350000.0,90,05/03/2025,Si
+27,Guantes de boxeo,Deportes,120000.0,40,18/07/2025,No
+28,Organizador de closet,Hogar,95000.0,60,22/01/2025,No
