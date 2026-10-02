@@ -1,0 +1,12 @@
+=== Instancia Neptune ===
+
+aws: [ERROR]: An error occurred (DBInstanceNotFound) when calling the DescribeDBInstances operation: DBInstance taller-aws-eia-punto4-neptune-instance not found.
+=== Cluster Neptune ===
+
+aws: [ERROR]: An error occurred (DBClusterNotFoundFault) when calling the DescribeDBClusters operation: DBCluster taller-aws-eia-punto4-neptune-cluster not found.
+=== EC2 bastion ===
+terminated
+=== Security groups ===
+=== Key pair ===
+
+aws: [ERROR]: An error occurred (InvalidKeyPair.NotFound) when calling the DescribeKeyPairs operation: The key pair 'taller-aws-eia-punto4-bastion-key' does not exist
