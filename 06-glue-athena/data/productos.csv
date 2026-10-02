@@ -1,0 +1,26 @@
+product_id,nombre,categoria,precio,stock,fecha_lanzamiento,en_oferta
+1,Laptop 14 pulgadas,Electronica,819724.42,38,13/11/2024,Si
+2,Mouse inalambrico,Electronica,195004.17,137,04/06/2024,Si
+3,Teclado mecanico,Electronica,2275614.6,54,02/02/2024,No
+4,Monitor 24 pulgadas,Electronica,1054157.8,61,03/09/2024,No
+5,Audifonos bluetooth,Electronica,161889.61,144,04/04/2024,Si
+6,Camiseta algodon,Ropa,1449100.83,101,02/04/2024,Si
+7,Pantalon jean,Ropa,1398312.27,34,10/07/2024,Si
+8,Chaqueta impermeable,Ropa,1358604.43,146,10/09/2024,Si
+9,Tenis running,Deportes,271093.45,146,21/04/2024,No
+10,Balon de futbol,Deportes,257114.98,182,03/10/2024,Si
+11,Mancuernas 5kg,Deportes,1553238.84,127,22/09/2024,No
+12,Colchoneta yoga,Deportes,1946413.51,119,19/08/2024,No
+13,Sofa 3 puestos,Hogar,759920.99,46,23/04/2024,Si
+14,Lampara de mesa,Hogar,1442442.92,134,16/06/2024,No
+15,Juego de ollas,Hogar,730525.35,18,04/09/2024,No
+16,Aspiradora,Hogar,424930.83,87,05/08/2024,No
+17,Novela de misterio,Libros,112430.03,171,03/09/2024,No
+18,Libro de cocina,Libros,860204.07,89,20/08/2024,No
+19,Comic coleccionable,Libros,185875.93,23,09/08/2024,Si
+20,Set de bloques,Juguetes,165763.53,179,10/11/2024,No
+21,Muneca articulada,Juguetes,722219.9,98,22/06/2024,Si
+22,Carro a control remoto,Juguetes,2352511.69,90,06/10/2024,Si
+23,Rompecabezas 500 piezas,Juguetes,1241827.09,55,25/05/2024,Si
+24,Bicicleta montana,Deportes,1849833.0,101,13/08/2024,Si
+25,Cafetera electrica,Hogar,428420.21,102,18/05/2024,Si
