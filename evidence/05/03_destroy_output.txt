@@ -1,0 +1,11 @@
+=== python deploy.py destroy (Punto 5) ===
+schema: ValidationException - Could not fetch secret from SecretManager (el secreto
+  'taller-redshift-credenciales' ya no existe, lo elimino/roto alguien del lado del profe
+  despues de que yo lo use para cargar los datos)
+bucket 'taller-aws-eia-punto5-dataset' eliminado.
+
+Destroy completo (namespace/workgroup/secreto compartidos, no se tocan).
+
+Intento alternativo: autenticar por credenciales temporales IAM (--db-user) en vez del
+secreto -> ValidationException: "DB User cannot be set during a serverless request."
+Confirmado: Redshift Serverless + Data API solo acepta SecretArn, no hay alternativa.

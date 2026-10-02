@@ -11,7 +11,7 @@ Entrega de la actividad "Taller AWS": Secrets Manager, Terraform/Boto3/CLI (S3+E
 | 2 | Terraform + Boto3 + CLI (S3, EC2, RDS) | [02-terraform-sdk-cli/](02-terraform-sdk-cli/) | ✅ |
 | 3 | Amazon DocumentDB | [03-documentdb/](03-documentdb/) | ✅ |
 | 4 | Amazon Neptune | [04-neptune/](04-neptune/) | ✅ |
-| 5 | Amazon Redshift | [05-redshift/](05-redshift/) | ⏳ |
+| 5 | Amazon Redshift | [05-redshift/](05-redshift/) | 🟡 completo salvo limpiar un schema propio (bloqueado por secreto compartido caído) |
 | 6 | AWS Glue Data Catalog + Athena | [06-glue-athena/](06-glue-athena/) | ⏳ |
 
 Cada carpeta tiene su propio README con objetivo, arquitectura, pasos de reproducción, preguntas respondidas, costos y evidencias.
