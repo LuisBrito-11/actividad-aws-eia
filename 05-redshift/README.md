@@ -83,5 +83,5 @@ Código: [`generar_dataset.py`](generar_dataset.py), [`deploy.py`](deploy.py). E
 - [x] Comparación conceptual con RDS (OLAP vs OLTP, caso de uso para cada uno).
 - [x] Preguntas de costos respondidas con precios verificados.
 - [x] Bucket S3 propio eliminado y verificado.
-- [ ] Schema propio (`degr02user4_punto5`) sin eliminar: el secreto compartido (`taller-redshift-credenciales`) desapareció antes de que pudiera correr el `destroy`, y la Data API para Redshift Serverless solo acepta autenticación por Secrets Manager (no credenciales temporales IAM, eso es solo para clusters aprovisionados — lo confirmé con `aws redshift-data execute-statement help`). No genera costo aparte (storage del namespace compartido, cantidad mínima de datos). Pendiente de que exista un secreto válido para correr la limpieza.
-- [x] Namespace/workgroup compartido: no es mío, no lo toco.
+- [x] Schema propio (`degr02user4_punto5`): no lo pude limpiar directamente (el secreto compartido desapareció antes de correr el `destroy`), pero quedó resuelto de todas formas porque el namespace/workgroup compartido completo se eliminó después (coordinado con mi compañero que también lo usaba) — confirmado con `get-workgroup`/`get-namespace`.
+- [x] Snapshot manual que creé (`taller-aws-eia-base-capacity-fix`, para poder bajar la capacidad base) eliminado y verificado.

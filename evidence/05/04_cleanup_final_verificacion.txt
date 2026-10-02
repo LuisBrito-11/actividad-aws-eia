@@ -1,0 +1,18 @@
+=== Verificacion final Punto 5 (y auditoria general de puntos 1-5) ===
+Redshift Serverless workgroup 'default-workgroup': ResourceNotFoundException (eliminado)
+Redshift Serverless namespace 'default-namespace': status DELETING -> luego confirmado
+  eliminado via consola (0 namespaces/workgroups listados)
+Snapshot manual 'taller-aws-eia-base-capacity-fix' (668 MB): eliminado (status DELETED)
+
+Auditoria cruzada (todos los puntos, prefijo taller-aws-eia):
+- EC2: ninguna instancia activa
+- RDS: ninguna instancia
+- DocumentDB: ningun cluster
+- Neptune: ningun cluster
+- Redshift provisionado: ningun cluster
+- S3: ningun bucket propio
+- Security groups: ninguno
+- Key pairs: ninguno
+- Secrets Manager: ninguno
+
+Nada propio genera costo.
