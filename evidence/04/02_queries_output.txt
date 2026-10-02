@@ -1,0 +1,22 @@
+=== python queries.py (conexion via tunel SSH + TLS, Punto 4) ===
+Grafo cargado: 12 vertices, 21 aristas.
+
+--- Consulta 1: amigos de amigos de Ana (2 saltos por KNOWS) ---
+  amigos directos de Ana: ['Maria', 'Luis']
+  amigos de amigos (2 saltos, puede incluir directos/Ana): ['Sofia', 'Carlos']
+
+--- Consulta 2: en que ciudad queda la empresa de cada persona (camino persona -> empresa -> ciudad) ---
+  {'empresa': 'DataSoft', 'ciudad_de_la_empresa': 'Bogota', 'persona': 'Maria'}
+  {'empresa': 'TechCorp', 'ciudad_de_la_empresa': 'Medellin', 'persona': 'Ana'}
+  {'empresa': 'CloudWorks', 'ciudad_de_la_empresa': 'Cali', 'persona': 'Sofia'}
+  {'empresa': 'TechCorp', 'ciudad_de_la_empresa': 'Medellin', 'persona': 'Luis'}
+  {'empresa': 'CloudWorks', 'ciudad_de_la_empresa': 'Cali', 'persona': 'Pedro'}
+  {'empresa': 'DataSoft', 'ciudad_de_la_empresa': 'Bogota', 'persona': 'Carlos'}
+
+--- Consulta 3: companeros de trabajo (personas conectadas por trabajar en la misma empresa) ---
+  {'p1': 'Maria', 'p2': 'Carlos'}
+  {'p1': 'Ana', 'p2': 'Luis'}
+  {'p1': 'Sofia', 'p2': 'Pedro'}
+  {'p1': 'Luis', 'p2': 'Ana'}
+  {'p1': 'Pedro', 'p2': 'Sofia'}
+  {'p1': 'Carlos', 'p2': 'Maria'}

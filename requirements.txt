@@ -1,5 +1,5 @@
 boto3>=1.34
 pymongo>=4.7
-gremlinpython>=3.7
+gremlinpython==3.7.2  # fijo a esta version: Neptune engine 1.4.8.0 usa TinkerPop 3.7.x, 3.8.x rompe el paso drop()
 psycopg2-binary>=2.9
 python-dotenv>=1.0
