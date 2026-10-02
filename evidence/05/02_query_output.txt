@@ -1,0 +1,33 @@
+=== python deploy.py query (Punto 5: filtro, JOIN, agregacion via Redshift Data API) ===
+
+--- Consulta 1 (filtro): pedidos de Electronica con monto > 300000 ---
+  {'order_id': 58, 'customer_id': 151, 'categoria': 'Electronica', 'monto': '499790.48'}
+  {'order_id': 37, 'customer_id': 78, 'categoria': 'Electronica', 'monto': '497019.88'}
+  {'order_id': 474, 'customer_id': 16, 'categoria': 'Electronica', 'monto': '493207.25'}
+  {'order_id': 150, 'customer_id': 93, 'categoria': 'Electronica', 'monto': '490654.58'}
+  {'order_id': 482, 'customer_id': 1, 'categoria': 'Electronica', 'monto': '489460.43'}
+  {'order_id': 29, 'customer_id': 71, 'categoria': 'Electronica', 'monto': '487404.52'}
+  {'order_id': 187, 'customer_id': 185, 'categoria': 'Electronica', 'monto': '484515.33'}
+  {'order_id': 218, 'customer_id': 104, 'categoria': 'Electronica', 'monto': '483437.85'}
+  {'order_id': 361, 'customer_id': 21, 'categoria': 'Electronica', 'monto': '474787.96'}
+  {'order_id': 278, 'customer_id': 112, 'categoria': 'Electronica', 'monto': '473742.50'}
+
+--- Consulta 2 (JOIN): gasto total por cliente, con nombre y ciudad ---
+  {'customer_id': 143, 'nombre': 'Nicolas Castro', 'ciudad': 'Cali', 'num_pedidos': 8, 'gasto_total': '2335927.24'}
+  {'customer_id': 71, 'nombre': 'Pedro Garcia', 'ciudad': 'Barranquilla', 'num_pedidos': 6, 'gasto_total': '2092171.85'}
+  {'customer_id': 16, 'nombre': 'Laura Vargas', 'ciudad': 'Medellin', 'num_pedidos': 5, 'gasto_total': '1994593.43'}
+  {'customer_id': 78, 'nombre': 'Andres Sanchez', 'ciudad': 'Pereira', 'num_pedidos': 5, 'gasto_total': '1976622.99'}
+  {'customer_id': 70, 'nombre': 'Alejandro Ramirez', 'ciudad': 'Bogota', 'num_pedidos': 4, 'gasto_total': '1654214.69'}
+  {'customer_id': 104, 'nombre': 'Valentina Torres', 'ciudad': 'Barranquilla', 'num_pedidos': 5, 'gasto_total': '1647607.70'}
+  {'customer_id': 121, 'nombre': 'Diego Lopez', 'ciudad': 'Barranquilla', 'num_pedidos': 5, 'gasto_total': '1637076.02'}
+  {'customer_id': 191, 'nombre': 'Felipe Castro', 'ciudad': 'Medellin', 'num_pedidos': 5, 'gasto_total': '1607514.52'}
+  {'customer_id': 21, 'nombre': 'Valentina Vargas', 'ciudad': 'Pereira', 'num_pedidos': 5, 'gasto_total': '1600594.86'}
+  {'customer_id': 142, 'nombre': 'Andres Lopez', 'ciudad': 'Barranquilla', 'num_pedidos': 6, 'gasto_total': '1573549.09'}
+
+--- Consulta 3 (agregacion): ventas totales y promedio por ciudad ---
+  {'ciudad': 'Pereira', 'num_pedidos': 87, 'ventas_totales': '23255749.35', 'ticket_promedio': '267307.46'}
+  {'ciudad': 'Medellin', 'num_pedidos': 90, 'ventas_totales': '23151322.75', 'ticket_promedio': '257236.91'}
+  {'ciudad': 'Bogota', 'num_pedidos': 81, 'ventas_totales': '22892800.71', 'ticket_promedio': '282627.16'}
+  {'ciudad': 'Barranquilla', 'num_pedidos': 84, 'ventas_totales': '22865653.70', 'ticket_promedio': '272210.16'}
+  {'ciudad': 'Cali', 'num_pedidos': 86, 'ventas_totales': '22281380.02', 'ticket_promedio': '259085.81'}
+  {'ciudad': 'Bucaramanga', 'num_pedidos': 72, 'ventas_totales': '17664513.72', 'ticket_promedio': '245340.46'}
